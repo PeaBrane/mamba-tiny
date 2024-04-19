@@ -28,7 +28,6 @@ tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 pad_token_id = tokenizer.pad_token_id
 
 dataset = load_dataset('wikitext', 'wikitext-103-raw-v1', split='validation')
-tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 tokenization = lambda sample: tokenizer(sample['text'])
 dataset = dataset.map(tokenization, batched=True)
 
