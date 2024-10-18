@@ -13,8 +13,6 @@ Does NOT include:
 * Kernel fusion. This repo does not make any attempt to perform kernel fusion of the selective scan operations with the other dense operations. So all the internal states of the model would be explicitly materialized, so memory usage may be a bottleneck.
 * Proper parameter initialization (though this could be added without sacrificing readability)
 
-Currently, the supposedly more stable `logcumsumexp` scan mode (heisen sequence) only works on the gpu for sentence generation (`demo.ipynb`) but somehow diverges on the cpu.
-
 ## Demo
 
 See [demo.ipynb](demo.ipynb) for examples of prompt completions.

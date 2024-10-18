@@ -9,9 +9,10 @@ def complex_log(input, eps=1e-12):
     return torch.complex(real, imag)
 
 
-def selective_scan(u, dt, A, B, C, D, mode='cumsum'):
+def selective_scan(u, dt, A, B, C, D, mode='logcumsumexp'):
     dA = torch.einsum('bld,dn->bldn', dt, A)
     dB_u = torch.einsum('bld,bld,bln->bldn', dt, u, B)
+    dA = dA.clamp(min=-20)
     
     match mode:
         case 'cumsum':
